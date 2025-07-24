@@ -1,0 +1,1 @@
+ini single blog

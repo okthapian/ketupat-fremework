@@ -1,0 +1,1 @@
+ini halaman index <?php echo APP_HOME ;?>
