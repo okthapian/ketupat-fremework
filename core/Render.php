@@ -7,7 +7,7 @@ class Render
         extract($data, EXTR_SKIP);
         // Ganti titik menjadi slash
         $filename = str_replace('.', '/', $filename);
-        require __DIR__ .'/../views/preview/'.$filename.'.php';
+        require __DIR__ .'/../app/views/preview/'.$filename.'.php';
     }
 
     public static function json($data, $statusCode = 200)

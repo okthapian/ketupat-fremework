@@ -12,7 +12,7 @@ spl_autoload_register(function ($class) {
 });
 
 require_once 'core/Router.php';
-require_once 'route/app.php';
+require_once 'app/route/app.php';
 
 $url = $_GET['url'] ?? '/';
 $url = rtrim($url, '/'); // bersihkan trailing slash
