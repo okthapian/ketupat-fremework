@@ -3,24 +3,16 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Nyamding - Jagonya Puding Aneka Rasa | Nikmat | Bikin Nagih</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Nikmati pengalaman berbeda menikmati puding aneka varian, Puding sehat dan enak, yang sangat cocok untuk anda" name="description">
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name='robots' content='index, follow' />
+	
+    <?php 
+    $seo_args = ['meta_title'=>'nyamding'];
+    seo::meta_tags($seo_args);
 
-    <link href="https://nyamding.vercel.app/" rel="canonical" />
-    <link rel="icon" type="image/svg+xml" href="https://nyamding.vercel.app/asset/img/nyamdinglogokotak.png">
-    <link rel="mask-icon" href="https://nyamding.vercel.app/asset/img/nyamdinglogokotak.png">
-
-    <meta content="id" property="og:locale" />
-    <meta content="Nyamding" property="og:site_name" />
-    <meta content="Nyamding - Jagonya Puding Aneka Rasa | Nikmat | Bikin Nagih" property="og:title" />
-    <meta content="https://nyamding.vercel.app/asset/img/nyamdinghome.png" property="og:image" />
-    <meta content="Nyamding" name="twitter:site" />
-    <meta content="Nyamding - Jagonya Puding Aneka Rasa | Nikmat | Bikin Nagih" name="twitter:title" />
-    <meta content="https://nyamding.vercel.app/asset/img/nyamdinghome.png" name="twitter:image" />
+    $seo_icon = ['icon'=>['https://nyamding.vercel.app/asset/img/nyamdinglogokotak.png']];
+    seo::favicon($seo_icon);
+    ?>
 
     
     <link rel="stylesheet" href="<?php echo get_assets('css/main.css');?>">
