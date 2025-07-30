@@ -4,6 +4,7 @@ Render::setcontent('content', function () { ?>
       <?php
 $admin = DB::table('admin')->get();
 pre($admin);
+pre(DB::$queries);
 ?>
         <!-- Hero Section -->
         <section class="py-6 lg:py-16  relative">

@@ -4,6 +4,8 @@ use Pixie\QueryBuilder\QueryBuilderHandler;
 
 class DB
 {
+    public static $queryCount = 0;
+    public static $queries = [];
     protected static $qb;
 
     public static function init()
@@ -13,6 +15,16 @@ class DB
             $connection = new Connection('mysql', $config);
             self::$qb = new QueryBuilderHandler($connection);
         }
+    }
+
+    protected static function logQuery($query, $bindings, $time)
+    {
+        self::$queryCount++;
+        self::$queries[] = [
+            'sql' => $query,
+            'bindings' => $bindings,
+            'time' => $time
+        ];
     }
 
     public static function table($table)
