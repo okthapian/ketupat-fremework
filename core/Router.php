@@ -18,21 +18,40 @@ class Route
             if (preg_match($pattern, $url, $matches)) {
                 array_shift($matches); // Remove full match
 
-                list($controller, $methodName) = explode('@', $route['action']);
-                $controller = ucfirst($controller) . 'Controller';
+                list($controllerRef, $methodName) = explode('@', $route['action']);
+
+                if (str_contains($controllerRef, ':')) {
+                    list($module, $controllerName) = explode(':', $controllerRef);
+                    $controllerClass = ucfirst($module) . '_' . ucfirst($controllerName) . 'Controller';
+                    $controllerPath = __DIR__ . "/../packages/{$module}/controllers/{$controllerClass}.php";
+                } else {
+                    $controllerClass = $controllerRef ? ucfirst($controllerRef) . 'Controller' : 'Controller';
+                    $controllerPath = __DIR__ . "/../app/controllers/{$controllerClass}.php";
+                }
+
+                if (!file_exists($controllerPath)) {
+                    http_response_code(500);
+                    echo "Controller file not found: {$controllerPath}";
+                    exit;
+                }
+
+                require_once $controllerPath;
+
                 $method = 'run_' . $methodName;
+                $instance = new $controllerClass;
 
-                require_once __DIR__ . "/../app/controllers/{$controller}.php";
+                if (!method_exists($instance, $method)) {
+                    http_response_code(500);
+                    echo "Method {$method} not found in controller {$controllerClass}";
+                    exit;
+                }
 
-                $instance = new $controller;
                 return call_user_func_array([$instance, $method], $matches);
             }
         }
 
-        // Jika tidak ditemukan
         http_response_code(404);
         echo "404 Not Found";
         exit;
     }
 }
-

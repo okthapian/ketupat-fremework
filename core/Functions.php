@@ -46,3 +46,39 @@ if(!function_exists('get_home_url')){
         return config('site.home_url');
     }
 }
+
+if (!function_exists('p')) {
+    // Cetak string tanpa HTML
+    function p($text)
+    {
+        echo htmlspecialchars(strip_tags($text));
+    }
+}
+
+if (!function_exists('pp')) {
+    // Cetak mentah (boleh HTML)
+    function pp($text)
+    {
+        echo $text;
+    }
+}
+
+if (!function_exists('pre')) {
+    // Cetak dengan <pre>, dukung array/object/string
+    function pre($data)
+    {
+        echo '<pre>';
+        print_r($data);
+        echo '</pre>';
+    }
+}
+
+if (!function_exists('dd')) {
+    // Dump dan die
+    function dd($data)
+    {
+        echo '<pre>';
+        var_dump($data);
+        echo '</pre>';
+    }
+}
