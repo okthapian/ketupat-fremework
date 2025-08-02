@@ -1,5 +1,9 @@
 <?php
 Render::setcontent('content', function () { ?>
+
+<?php p(Date::now());?>
+
+<?php pre(Arr::make([1,2,3,4,5,5,6,23,1,2])->sort());?>
     <main>
         <!-- Hero Section -->
         <section class="py-6 lg:py-16  relative">
