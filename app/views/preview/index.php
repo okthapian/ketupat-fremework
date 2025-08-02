@@ -1,11 +1,6 @@
 <?php
 Render::setcontent('content', function () { ?>
     <main>
-      <?php
-$admin = DB::table('admin')->get();
-pre($admin);
-pre(DB::$queries);
-?>
         <!-- Hero Section -->
         <section class="py-6 lg:py-16  relative">
             <div class="absolute inset-0 blur-[60px] bg-gradient-to-l from-orange-600/20 via-orange-600/5 to-orange-600/0">
